@@ -1103,13 +1103,13 @@ function TodayPanel({allData,getMI,viewDay,viewM,setViewDay,setViewM,weekIdx,set
                 border:`${isBox?"2.5px":"1.5px"} solid ${isOn?(isBox?"#1565c0":cm.color):"#e0e0e0"}`,
                 background:isOn?(isBox?"#dbeafe":cm.bg):"#fafafa",
                 cursor:"pointer",fontFamily:"inherit",
-                display:"flex",flexDirection:"column",alignItems:"center",gap:1,
+                display:"flex",flexDirection:"column",alignItems:"center",gap:2,
                 minWidth:0,
               }}>
-                <span style={{fontSize:isLib?8:10,fontWeight:900,color:isOn?(isBox?"#1e40af":cm.color):"#ccc",lineHeight:1}}>
-                  {isBox?"⊠":isOn?"×":"·"} {h.code}
+                <span style={{fontSize:isLib?8:9,fontWeight:900,color:isOn?(isBox?"#1e40af":cm.color):"#999",lineHeight:1}}>
+                  {isBox?"⊠":isOn?"×":"·"} {h.emoji}{h.code}
                 </span>
-                <span style={{fontSize:5,color:isOn?"#666":"#ddd",lineHeight:1,textAlign:"center",whiteSpace:"nowrap",overflow:"hidden",maxWidth:50}}>{h.emoji} {h.label}</span>
+                <span style={{fontSize:5.5,color:isOn?"#444":"#999",lineHeight:1,textAlign:"center",whiteSpace:"nowrap",overflow:"hidden",maxWidth:50}}>{h.label}</span>
               </button>
             );
           };
@@ -2376,7 +2376,7 @@ function App() {
     const priChecksRaw=()=>{try{const v=localStorage.getItem("lifeos_v8_priChecks");return v?JSON.parse(v):{}}catch(e){return {};}};
     const pc=priChecksRaw();
     const wkPriChecks=pc["w"+wk.n]||[];
-    const pris=(weekAssess?.priorities||[]);
+    const pris=(weekAssess?.["w"+wk.n]?.priorities||[]);
     const hasPris=pris.some(p=>p.trim());
     if(hasPris){
       out+=`\nWEEK PRIORITIES (W${wk.n}):\n`;
